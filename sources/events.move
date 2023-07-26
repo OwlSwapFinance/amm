@@ -141,6 +141,46 @@ module owlswap_amm::events {
         });
     }
 
+    struct PoolTradingTimeChange has drop, copy {
+        pool_id: ID,
+        new_time: u64,
+    }
+
+    public fun emit_pool_tradingtime_change(pool_id: ID, new_time: u64) {
+        event::emit(PoolTradingTimeChange{
+            pool_id,
+            new_time
+        });
+    }
+
+    struct PoolWhiteListSet has drop, copy {
+        pool_id: ID,
+        action: u8,
+        target:address
+    }
+
+    public fun emit_pool_whitelist_set(pool_id: ID, action: u8, target:address) {
+        event::emit(PoolWhiteListSet{
+            pool_id,
+            action,
+            target
+        });
+    }
+
+    struct PoolBlackListSet has drop, copy {
+        pool_id: ID,
+        action: u8,
+        target:address
+    }
+
+    public fun emit_pool_blacklist_set(pool_id: ID, action: u8, target:address) {
+        event::emit(PoolBlackListSet{
+            pool_id,
+            action,
+            target
+        });
+    }
+
     struct Test has drop, copy{
         time:u64
     }

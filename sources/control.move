@@ -110,6 +110,7 @@ module owlswap_amm::control {
     entry fun withdraw<X, Y>(store: &mut Store, pool: &mut Pool<X, Y>, recipient: address, ctx: &mut TxContext) {
         check_version(store);
         check_master(store, ctx);
+
         let (x_coin, y_coin) = pool::withdraw_transaction_fee(pool, ctx);
 
         let x_value = coin::value(&x_coin);
